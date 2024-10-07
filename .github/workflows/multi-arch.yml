@@ -85,9 +85,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PWD }}
 
-      - name: Login To Alibaba Cloud Container Registry
-        run: |
-          docker login -u ${{ secrets.ALIYUN_USERNAME }} -p ${{ secrets.ALIYUN_PWD }} registry.cn-shanghai.aliyuncs.com
+      # - name: Login To Alibaba Cloud Container Registry
+        # run: |
+          # docker login -u ${{ secrets.ALIYUN_USERNAME }} -p ${{ secrets.ALIYUN_PWD }} registry.cn-shanghai.aliyuncs.com
 
       - name: Generate Variables
         id: env
@@ -144,8 +144,8 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
-            registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
-
+            
+          # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
       - name: Build & Push Mini Image (Extra Tag)
         if: env.DOCKER_EXTERA_TAG != null
         uses: docker/build-push-action@v2
@@ -157,8 +157,8 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
             ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}
-            registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
-            registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}
+          # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
+          # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}
 
       - name: Set Normal Image Builder
         run: |
@@ -199,7 +199,7 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DEVICE_PLATFORM }}
-            registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DEVICE_PLATFORM }}
+          # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DEVICE_PLATFORM }}
 
       - name: Build & Push Normal Image (Extra Tag)
         if: env.DOCKER_EXTERA_TAG != null
@@ -212,5 +212,5 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DEVICE_PLATFORM }}
             ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}
-            registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DEVICE_PLATFORM }}
-            registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}
+          # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DEVICE_PLATFORM }}
+          # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}

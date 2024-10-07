@@ -9,7 +9,7 @@
 name: Multi-Arch Images
 
 env:
-  PREFIX_URL: https://storage.openwrt.cc/snapshots/targets
+  PREFIX_URL: https://downloads.immortalwrt.org/snapshots/targets
 
 on:
   workflow_dispatch:

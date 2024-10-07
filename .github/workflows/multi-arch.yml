@@ -110,8 +110,8 @@ jobs:
       - name: Set Mini Image Builder
         run: |
           tar -I zstd -xf *.tar.zst
-          find . -name "*.tar.gz" -exec tar -zxvf {} \;
           cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
+          find . -name "*.tar.gz" -exec tar -zxvf {} \;
           cp -f $GITHUB_WORKSPACE/config/repositories.conf .
           sed -i "s/DEVICE_SUBTARGET/$DEVICE_SUBTARGET/g; \
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \
@@ -163,8 +163,8 @@ jobs:
       - name: Set Normal Image Builder
         run: |
           tar -I zstd -xf *.tar.zst
-          find . -name "*.tar.gz" -exec tar -zxvf {} \;
           cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
+          find . -name "*.tar.gz" -exec tar -zxvf {} \;
           cp -f $GITHUB_WORKSPACE/config/repositories.conf .
           sed -i "s/DEVICE_SUBTARGET/$DEVICE_SUBTARGET/g; \
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \

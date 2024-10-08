@@ -21,13 +21,13 @@ OpenWrt 标准镜像为集成常用软件包的 Docker 镜像，镜像自带软�
 
 |  支持设备/平台  |        DockerHub        |
 | :-------------: | :---------------------: |
-|    树莓派 1B    |  sulinggg/openwrt:rpi1  |
-|    树莓派 2B    |  sulinggg/openwrt:rpi2  |
-| 树莓派 3B / 3B+ |  sulinggg/openwrt:rpi3  |
-|    树莓派 4B    |  sulinggg/openwrt:rpi4  |
-|      armv7      | sulinggg/openwrt:armv7  |
-|  arm8/aarch64   | sulinggg/openwrt:armv8  |
-|  x86_64/amd64   | sulinggg/openwrt:x86_64 |
+|    树莓派 1B    |  14790897/openwrt:rpi1  |
+|    树莓派 2B    |  14790897/openwrt:rpi2  |
+| 树莓派 3B / 3B+ |  14790897/openwrt:rpi3  |
+|    树莓派 4B    |  14790897/openwrt:rpi4  |
+|      armv7      | 14790897/openwrt:armv7  |
+|  arm8/aarch64   | 14790897/openwrt:armv8  |
+|  x86_64/amd64   | 14790897/openwrt:x86_64 |
 
 ### OpenWrt-Mini 镜像
 
@@ -35,13 +35,13 @@ OpenWrt-Mni 镜像为几乎未添加额外软件包的 Docker 镜像，你可以
 
 |  支持设备/平台  |          DockerHub           |
 | :-------------: | :--------------------------: |
-|    树莓派 1B    |  sulinggg/openwrt-mini:rpi1  |
-|    树莓派 2B    |  sulinggg/openwrt-mini:rpi2  |
-| 树莓派 3B / 3B+ |  sulinggg/openwrt-mini:rpi3  |
-|    树莓派 4B    |  sulinggg/openwrt-mini:rpi4  |
-|      armv7      | sulinggg/openwrt-mini:armv7  |
-|  arm8/aarch64   | sulinggg/openwrt-mini:armv8  |
-|  x86_64/amd64   | sulinggg/openwrt-mini:x86_64 |
+|    树莓派 1B    |  14790897/openwrt-mini:rpi1  |
+|    树莓派 2B    |  14790897/openwrt-mini:rpi2  |
+| 树莓派 3B / 3B+ |  14790897/openwrt-mini:rpi3  |
+|    树莓派 4B    |  14790897/openwrt-mini:rpi4  |
+|      armv7      | 14790897/openwrt-mini:armv7  |
+|  arm8/aarch64   | 14790897/openwrt-mini:armv8  |
+|  x86_64/amd64   | 14790897/openwrt-mini:x86_64 |
 
 ## 注意事项
 

@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # 设置一些环境变量
 PREFIX_URL="https://downloads.immortalwrt.org/snapshots/targets"
 DEVICE_PLATFORM="x86_64"
@@ -11,31 +10,26 @@ KERNEL_VERSION=""
 # 选择 ImageBuilder 的下载路径和文件名
 IMAGEBUILDER_URL="$PREFIX_URL/$DEVICE_TARGET/$DEVICE_SUBTARGET/immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64.tar.zst"
 
-# 创建工作目录
-WORKDIR="immortalwrt-build"
-mkdir -p $WORKDIR
-cd $WORKDIR
-
 # 下载 Image Builder
 echo "Downloading Image Builder..."
-wget -q $IMAGEBUILDER_URL -O imagebuilder.tar.zst
+wget -q $IMAGEBUILDER_URL
 
 # 解压 Image Builder
 echo "Extracting Image Builder..."
-tar -I zstd -xf imagebuilder.tar.zst
+tar -I zstd -xf *.tar.zst
 
 # 进入解压后的 Image Builder 目录
 cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
 
 # 复制配置文件并修改
 echo "Copying and modifying repositories.conf..."
-cp -f ../repositories.conf .
+cp -f ../../config/repositories.conf .
 sed -i "s/DEVICE_SUBTARGET/$DEVICE_SUBTARGET/g; \
     s/DEVICE_TARGET/$DEVICE_TARGET/g; \
     s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" repositories.conf
 
 # 复制文件目录
-cp -rf ../files .
+cp -rf ../../files .
 chmod +x files/etc/rc.local
 
 # 获取内核版本
@@ -53,7 +47,7 @@ sed -i "s/DEVICE_SUBTARGET/$DEVICE_SUBTARGET/g; \
 echo "Building Mini RootFS..."
 sed -i "/CONFIG_TARGET_ROOTFS_SQUASHFS/s/.*/# CONFIG_TARGET_ROOTFS_SQUASHFS is not set/; \
     /CONFIG_TARGET_ROOTFS_EXT4FS/s/.*/# CONFIG_TARGET_ROOTFS_EXT4FS is not set/" .config
-CONFIG_MINI_PACKAGES=$(cat ../mini-packages.config | tr -s "\n" " ")
+CONFIG_MINI_PACKAGES=$(cat ../../config/mini-packages.config | tr -s "\n" " ")
 make image PACKAGES="$CONFIG_MINI_PACKAGES" FILES="files"
 
 # 将生成的 RootFS 复制回上一级目录
@@ -61,7 +55,7 @@ cp bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET/*rootfs.tar.gz ../
 
 # 清理工作目录
 echo "Cleaning up..."
-cd ../
-rm -rf immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
+# cd ../
+# rm -rf immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
 
 echo "Build complete! The generated RootFS is in $(pwd)."

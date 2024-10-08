@@ -78,11 +78,6 @@ jobs:
 
       - name: Set Up Docker Buildx
         uses: docker/setup-buildx-action@v1
-        
-      - name: Modify .config to Disable ISO Images
-        run: |
-          sed -i '/^CONFIG_ISO_IMAGES=y$/d' .config || true
-
       - name: Login To DockerHub
         uses: docker/login-action@v1
         with:
@@ -111,6 +106,9 @@ jobs:
         run: |
           wget -q $PREFIX_URL/$DEVICE_TARGET/$DEVICE_SUBTARGET/immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64.tar.zst
         # example: https://downloads.immortalwrt.org/snapshots/targets/x86/64/immortalwrt-imagebuilder-x86-64.Linux-x86_64.tar.zst
+      - name: Modify .config to Disable ISO Images
+        run: |
+          sed -i '/^CONFIG_ISO_IMAGES=y$/d' .config || true
       - name: Set Mini Image Builder
         run: |
           tar -I zstd -xf *.tar.zst

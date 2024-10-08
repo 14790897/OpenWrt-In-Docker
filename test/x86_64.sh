@@ -49,7 +49,7 @@ sed -i "/CONFIG_TARGET_ROOTFS_SQUASHFS/s/.*/# CONFIG_TARGET_ROOTFS_SQUASHFS is n
     /CONFIG_TARGET_ROOTFS_EXT4FS/s/.*/# CONFIG_TARGET_ROOTFS_EXT4FS is not set/" .config
 CONFIG_MINI_PACKAGES=$(cat ../../config/mini-packages.config | tr -s "\n" " ")
 make image PACKAGES="$CONFIG_MINI_PACKAGES" FILES="files"
-
+# 测试：make image PACKAGES="luci" FILES="files"
 # 将生成的 RootFS 复制回上一级目录
 cp bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET/*rootfs.tar.gz ../
 

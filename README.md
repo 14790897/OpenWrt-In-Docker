@@ -9,7 +9,7 @@
 
 Github: <https://github.com/14790897/OpenWrt-In-Docker>
 
-DockerHub: <https://hub.docker.com/repository/docker/14790897/openwrt>
+DockerHub: <https://hub.docker.com/repository/docker/14790897/openwrt/general>
 
 ## 支持设备及镜像版本
 

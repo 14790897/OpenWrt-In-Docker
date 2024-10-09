@@ -1,0 +1,34 @@
+##  配置方法
+使用  docker-compose
+```yml
+services:
+  openwrt:
+    image: 14790897/openwrt:x86_64
+    container_name: openwrt
+    restart: always
+    privileged: true
+    networks:
+      macvlan_net:
+        ipv4_address: 192.168.0.188 # 为容器指定静态 IP 地址
+    command: /sbin/init
+
+networks:
+  macvlan_net:
+    driver: macvlan
+    driver_opts:
+      parent: enp1s0
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24 # 定义容器使用的子网
+          gateway: 192.168.0.1 # 定义网关
+```
+运行后进入 容器
+docker exec -it openwrt /bin/bash
+nano /etc/config/network
+修改IP地址和路由器同一网段，网关是路由器地址
+![image|369x500](upload://3XyxYevJvcGL0pA4oaUsROvt7cj.png)
+然后重启网络服务：
+
+/etc/init.d/network restart
+
+然后访问配置的IP地址就可以用了

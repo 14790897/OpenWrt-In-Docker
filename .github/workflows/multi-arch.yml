@@ -111,10 +111,6 @@ jobs:
         run: |
           tar -I zstd -xf *.tar.zst
           cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
-          cp -f $GITHUB_WORKSPACE/config/repositories.conf .
-          sed -i "s/DEVICE_SUBTARGET/$DEVICE_SUBTARGET/g; \
-            s/DEVICE_TARGET/$DEVICE_TARGET/g; \
-            s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" repositories.conf
           cp -rf $GITHUB_WORKSPACE/files .
           chmod +x files/etc/rc.local
           export KERNEL_VERSION="$(ls packages | grep kernel | awk -F '_' '{print $2}')"
@@ -122,6 +118,7 @@ jobs:
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \
             s/KERNEL_VERSION/$KERNEL_VERSION/g; \
             s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" files/etc/opkg/distfeeds.conf
+        # 其实可以直接复制imagebuilder根目录下的repositories.conf
 
       - name: Build Mini RootFS
         run: |
@@ -130,7 +127,7 @@ jobs:
           sed -i "/CONFIG_TARGET_ROOTFS_SQUASHFS/s/.*/# CONFIG_TARGET_ROOTFS_SQUASHFS is not set/;
             /CONFIG_TARGET_ROOTFS_EXT4FS/s/.*/# CONFIG_TARGET_ROOTFS_EXT4FS is not set/" .config
           export CONFIG_MINI_PACKAGES=$(cat $GITHUB_WORKSPACE/config/mini-packages.config | tr -s "\n" " ")
-          make image PACKAGES="$CONFIG_MINI_PACKAGES -ipv6helper" FILES="files" V=s
+          make image  FILES="files" V=s
           ls -lR bin/targets/
           cp bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET/*rootfs.tar.gz $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE
@@ -165,10 +162,6 @@ jobs:
         run: |
           tar -I zstd -xf *.tar.zst
           cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
-          cp -f $GITHUB_WORKSPACE/config/repositories.conf .
-          sed -i "s/DEVICE_SUBTARGET/$DEVICE_SUBTARGET/g; \
-            s/DEVICE_TARGET/$DEVICE_TARGET/g; \
-            s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" repositories.conf
           cp -rf $GITHUB_WORKSPACE/files .
           chmod +x files/etc/rc.local
           export KERNEL_VERSION="$(ls packages | grep kernel | awk -F '_' '{print $2}')"
@@ -186,7 +179,7 @@ jobs:
           sed -i "/CONFIG_TARGET_ROOTFS_SQUASHFS/s/.*/# CONFIG_TARGET_ROOTFS_SQUASHFS is not set/;
             /CONFIG_TARGET_ROOTFS_EXT4FS/s/.*/# CONFIG_TARGET_ROOTFS_EXT4FS is not set/" .config
           export CONFIG_NORMAL_PACKAGES=$(cat $GITHUB_WORKSPACE/config/normal-packages.config | tr -s "\n" " ")
-          make image PACKAGES="$CONFIG_NORMAL_PACKAGES -ipv6helper" FILES="files" V=s
+          make image  FILES="files" V=s
           ls -lR bin/targets/
           cp bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET/*rootfs.tar.gz $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE

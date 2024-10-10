@@ -142,7 +142,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-test-mini:${{ env.DEVICE_PLATFORM }}
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
       - name: Build & Push Mini Image (Extra Tag)
         if: env.DOCKER_EXTERA_TAG != null
@@ -153,8 +153,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-test-mini:${{ env.DEVICE_PLATFORM }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-test-mini:${{ env.DOCKER_EXTERA_TAG }}
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}
 
@@ -194,7 +194,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DEVICE_PLATFORM }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-test:${{ env.DEVICE_PLATFORM }}
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DEVICE_PLATFORM }}
 
       - name: Build & Push Normal Image (Extra Tag)
@@ -206,7 +206,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DEVICE_PLATFORM }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-test:${{ env.DEVICE_PLATFORM }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-test:${{ env.DOCKER_EXTERA_TAG }}
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DEVICE_PLATFORM }}
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}

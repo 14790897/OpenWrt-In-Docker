@@ -9,7 +9,7 @@
 name: Multi-Arch Images
 
 env:
-  PREFIX_URL: https://downloads.immortalwrt.org/snapshots/targets
+  PREFIX_URL: https://downloads.immortalwrt.org/23.05.3/targets
 
 on:
   workflow_dispatch:
@@ -105,7 +105,7 @@ jobs:
       - name: Download Image Builder
         run: |
           wget -q $PREFIX_URL/$DEVICE_TARGET/$DEVICE_SUBTARGET/immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64.tar.zst
-        # example: https://downloads.immortalwrt.org/snapshots/targets/x86/64/immortalwrt-imagebuilder-x86-64.Linux-x86_64.tar.zst
+        # example: https://downloads.immortalwrt.org/23.05.3/targets/x86/64/immortalwrt-imagebuilder-x86-64.Linux-x86_64.tar.zst
 
       - name: Set Mini Image Builder
         run: |

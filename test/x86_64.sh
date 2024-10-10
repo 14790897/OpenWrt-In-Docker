@@ -1,6 +1,6 @@
 #!/bin/bash
 # 设置一些环境变量
-PREFIX_URL="https://downloads.immortalwrt.org/snapshots/targets"
+PREFIX_URL="https://downloads.immortalwrt.org/23.05.3/targets"
 DEVICE_PLATFORM="x86_64"
 DEVICE_TARGET="x86"
 DEVICE_SUBTARGET="64"

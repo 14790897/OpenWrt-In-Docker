@@ -3,7 +3,7 @@
 config/platform.config
 举例：x86_64/x86/64/linux-amd64/amd64
 解释：x86_64 是镜像的标签 x86 是 target 64 是 subtarget linux-amd64 是镜像构建时使用的平台
-
+aarch64_generic/armsr/armv8/linux-arm64/armv8需要稳定版本才能构建否则报错，具体看 ./遇到的报错.md
 ## 配置方法
 
 使用 docker-compose

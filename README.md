@@ -1,15 +1,15 @@
 # [OpenWrt-In-Docker](https://github.com/14790897/OpenWrt-In-Docker)
 
-<!-- [![GitHub Stars](https://img.shields.io/github/stars/SuLingGG/OpenWrt-Rpi-Docker.svg?style=flat-square&label=Stars&logo=github)](https://github.com/SuLingGG/OpenWrt-Rpi-Docker/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/SuLingGG/OpenWrt-Rpi-Docker.svg?style=flat-square&label=Forks&logo=github)](https://github.com/SuLingGG/OpenWrt-Rpi-Docker/fork)
-[![Docker Stars](https://img.shields.io/docker/stars/sulinggg/openwrt.svg?style=flat-square&label=Stars&logo=docker)](https://hub.docker.com/r/sulinggg/openwrt)
-[![Docker Pulls](https://img.shields.io/docker/pulls/sulinggg/openwrt.svg?style=flat-square&label=Pulls&logo=docker&color=orange)](https://hub.docker.com/r/sulinggg/openwrt) -->
+[![GitHub Stars](https://img.shields.io/github/stars/14790897/OpenWrt-In-Docker.svg?style=flat-square&label=Stars&logo=github)](https://github.com/14790897/OpenWrt-In-Docker/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/14790897/OpenWrt-In-Docker.svg?style=flat-square&label=Forks&logo=github)](https://github.com/14790897/OpenWrt-In-Dockerr/fork)
+[![Docker Stars](https://img.shields.io/docker/stars/14790897/openwrt.svg?style=flat-square&label=Stars&logo=docker)](https://hub.docker.com/r/14790897/openwrt)
+[![Docker Pulls](https://img.shields.io/docker/pulls/14790897/openwrt.svg?style=flat-square&label=Pulls&logo=docker&color=orange)](https://hub.docker.com/r/14790897/openwrt)
 
 本项目旨在构建适用于树莓派 1~4 、适用于 armv6/armv7/armv8(aarch64)/x86_64(amd64) 平台设备的 OpenWrt 镜像 (每日更新)。
 
 Github: <https://github.com/14790897/OpenWrt-In-Docker>
 
-DockerHub: <https://hub.docker.com/repository/docker/14790897/openwrt/general>
+DockerHub: <https://hub.docker.com/r/14790897/openwrt/tags>
 
 ## 支持设备及镜像版本
 

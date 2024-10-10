@@ -104,12 +104,12 @@ jobs:
 
       - name: Download Image Builder
         run: |
-          wget -q $PREFIX_URL/$DEVICE_TARGET/$DEVICE_SUBTARGET/immortalwrt-imagebuilder-23.05.3-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64.tar.zst
+          wget -q $PREFIX_URL/$DEVICE_TARGET/$DEVICE_SUBTARGET/immortalwrt-imagebuilder-23.05.3-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64.tar.xz
         # example: https://downloads.immortalwrt.org/releases/23.05.3/targets/x86/64/immortalwrt-imagebuilder-x86-64.Linux-x86_64.tar.zst
 
       - name: Set Mini Image Builder
         run: |
-          tar -I zstd -xf *.tar.zst
+          tar -Jxf *.tar.xz
           cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
           cp -f $GITHUB_WORKSPACE/config/repositories.conf .
           sed -i "s/DEVICE_SUBTARGET/$DEVICE_SUBTARGET/g; \
@@ -162,7 +162,7 @@ jobs:
 
       - name: Set Normal Image Builder
         run: |
-          tar -I zstd -xf *.tar.zst
+          tar -Jxf *.tar.xz
           cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
           cp -f $GITHUB_WORKSPACE/config/repositories.conf .
           sed -i "s/DEVICE_SUBTARGET/$DEVICE_SUBTARGET/g; \

@@ -1,5 +1,13 @@
-##  配置方法
-使用  docker-compose
+## 代码解读
+
+config/platform.config
+举例：x86_64/x86/64/linux-amd64/amd64
+解释：x86_64 是镜像的标签 x86 是 target 64 是 subtarget linux-amd64 是镜像构建时使用的平台
+
+## 配置方法
+
+使用 docker-compose
+
 ```yml
 services:
   openwrt:
@@ -22,13 +30,14 @@ networks:
         - subnet: 192.168.0.0/24 # 定义容器使用的子网
           gateway: 192.168.0.1 # 定义网关
 ```
+
 运行后进入 容器
 docker exec -it openwrt /bin/bash
 nano /etc/config/network
-修改IP地址和路由器同一网段，网关是路由器地址
+修改 IP 地址和路由器同一网段，网关是路由器地址
 ![image|369x500](upload://3XyxYevJvcGL0pA4oaUsROvt7cj.png)
 然后重启网络服务：
 
 /etc/init.d/network restart
 
-然后访问配置的IP地址就可以用了
+然后访问配置的 IP 地址就可以用了

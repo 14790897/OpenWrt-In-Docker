@@ -123,7 +123,7 @@ jobs:
         run: |
           cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
           sed -i '/^CONFIG_ISO_IMAGES=y$/d' .config || true
-            sed -i '/# CONFIG_TARGET_ROOTFS_TARGZ is not set/s/.*/CONFIG_TARGET_ROOTFS_TARGZ=y/' .config
+          sed -i '/# CONFIG_TARGET_ROOTFS_TARGZ is not set/s/.*/CONFIG_TARGET_ROOTFS_TARGZ=y/' .config
           sed -i "/CONFIG_TARGET_ROOTFS_SQUASHFS/s/.*/# CONFIG_TARGET_ROOTFS_SQUASHFS is not set/;
             /CONFIG_TARGET_ROOTFS_EXT4FS/s/.*/# CONFIG_TARGET_ROOTFS_EXT4FS is not set/" .config
           export CONFIG_MINI_PACKAGES=$(cat $GITHUB_WORKSPACE/config/mini-packages.config | tr -s "\n" " ")

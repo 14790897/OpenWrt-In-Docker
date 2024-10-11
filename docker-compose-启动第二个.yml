@@ -1,0 +1,18 @@
+services:
+  openwrt:
+    image: 14790897/openwrt:x86_64
+    container_name: openwrt-another
+    restart: always
+    privileged: true
+    networks:
+      openwrt_macvlan_net:
+    command: /sbin/init
+
+networks:
+  openwrt_macvlan_net:
+    external: true
+# ip link add macvlan0 link enp1s0 type macvlan mode bridge # 注意重启后不保留
+# ip addr add 192.168.0.198/24 dev macvlan0  # 分配在与容器相同子网内的 IP
+# ip link set macvlan0 up
+# ip route add 192.168.0.188 dev macvlan0
+# 使用这个不需要开启网卡混杂模式 ip link set dev enp1s0 promisc on

@@ -118,6 +118,7 @@ jobs:
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \
             s/KERNEL_VERSION/$KERNEL_VERSION/g; \
             s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" files/etc/opkg/distfeeds.conf
+          cat repositories.conf > files/etc/opkg/distfeeds.conf
 
       - name: Build Mini RootFS
         run: |
@@ -169,6 +170,7 @@ jobs:
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \
             s/KERNEL_VERSION/$KERNEL_VERSION/g; \
             s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" files/etc/opkg/distfeeds.conf
+          cat repositories.conf > files/etc/opkg/distfeeds.conf
 
       - name: Build Normal RootFS
         run: |

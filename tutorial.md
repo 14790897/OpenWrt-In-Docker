@@ -17,7 +17,6 @@ services:
     privileged: true
     networks:
       macvlan_net:
-        ipv4_address: 192.168.0.188 # 为容器指定静态 IP 地址
     command: /sbin/init
 
 networks:

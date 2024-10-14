@@ -28,6 +28,7 @@ OpenWrt 标准镜像为集成常用软件包的 Docker 镜像，镜像自带软�
 |      armv7      | 14790897/openwrt:armv7  |
 |  arm8/aarch64   | 14790897/openwrt:armv8  |
 |  x86_64/amd64   | 14790897/openwrt:x86_64 |
+|    玩客云       | 14790897/openwrt:onecloud|
 
 ### OpenWrt-Mini 镜像
 
@@ -42,6 +43,7 @@ OpenWrt-Mni 镜像为几乎未添加额外软件包的 Docker 镜像，你可以
 |      armv7      | 14790897/openwrt-mini:armv7  |
 |  arm8/aarch64   | 14790897/openwrt-mini:armv8  |
 |  x86_64/amd64   | 14790897/openwrt-mini:x86_64 |
+|    玩客云       | 14790897/openwrt-mini:onecloud|
 
 ## 注意事项
 
@@ -70,6 +72,7 @@ modprobe xt_TPROXY
 ## 鸣谢
 
 <https://github.com/SuLingGG/OpenWrt-Docker>
+
 P3TERX/Actions-OpenWrt (本项目基于此项目):
 
 <https://github.com/P3TERX/Actions-OpenWrt>

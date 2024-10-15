@@ -6,18 +6,17 @@ services:
     privileged: true
     networks:
       macvlan_net:
-        ipv4_address: 192.168.0.188 # 为容器指定静态 IP 地址
     command: /sbin/init
-
+#  command: /bin/sh -c "echo 'MY_IP is ${MY_IP}' && /sbin/init && sed -i \"s/option ipaddr '192.168.0.188'/option ipaddr '192.168.0.178'/\" /etc/config/network && /etc/init.d/network restart"
 networks:
   macvlan_net:
     driver: macvlan
     driver_opts:
-      parent: enp1s0
+      parent: enp1s0 # 更换为自己的网口
     ipam:
       config:
-        - subnet: 192.168.0.0/24 # 定义容器使用的子网
-          gateway: 192.168.0.1 # 定义网关
+        - subnet: 192.168.0.0/24 # 更换为自己的子网
+          gateway: 192.168.0.1 # 更换为自己的的网关
 # ip link add macvlan0 link enp1s0 type macvlan mode bridge # 注意重启后不保留
 # ip addr add 192.168.0.198/24 dev macvlan0  # 分配在与容器相同子网内的 IP
 # ip link set macvlan0 up

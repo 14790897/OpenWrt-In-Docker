@@ -109,8 +109,13 @@ jobs:
 
       - name: Set Mini Image Builder
         run: |
+<<<<<<< HEAD
           tar -Jxf *.tar.xz
           cd immortalwrt-imagebuilder-23.05.3-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
+=======
+          tar -I zstd -xf *.tar.zst
+          cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
+>>>>>>> main
           cp -rf $GITHUB_WORKSPACE/files .
           chmod +x files/etc/rc.local
           export KERNEL_VERSION="$(ls packages | grep kernel | awk -F '_' '{print $2}')"
@@ -118,15 +123,24 @@ jobs:
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \
             s/KERNEL_VERSION/$KERNEL_VERSION/g; \
             s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" files/etc/opkg/distfeeds.conf
+          cat repositories.conf > files/etc/opkg/distfeeds.conf
+          sed -i '/^src imagebuilder file:packages$/d' files/etc/opkg/distfeeds.conf || true
+          sed -i '/^option check_signature$/d' files/etc/opkg/distfeeds.conf || true
 
       - name: Build Mini RootFS
         run: |
           cd immortalwrt-imagebuilder-23.05.3-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
           sed -i '/^CONFIG_ISO_IMAGES=y$/d' .config || true
+          sed -i '/# CONFIG_TARGET_ROOTFS_TARGZ is not set/s/.*/CONFIG_TARGET_ROOTFS_TARGZ=y/' .config
           sed -i "/CONFIG_TARGET_ROOTFS_SQUASHFS/s/.*/# CONFIG_TARGET_ROOTFS_SQUASHFS is not set/;
             /CONFIG_TARGET_ROOTFS_EXT4FS/s/.*/# CONFIG_TARGET_ROOTFS_EXT4FS is not set/" .config
           export CONFIG_MINI_PACKAGES=$(cat $GITHUB_WORKSPACE/config/mini-packages.config | tr -s "\n" " ")
+<<<<<<< HEAD
           make image FILES="files" V=s
+=======
+          make image PACKAGES="$CONFIG_MINI_PACKAGES -ipv6helper" FILES="files" V=s
+          ls -lR bin/targets/
+>>>>>>> main
           cp bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET/*rootfs.tar.gz $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE
           rm -rf immortalwrt-imagebuilder-23.05.3-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
@@ -158,9 +172,14 @@ jobs:
 
       - name: Set Normal Image Builder
         run: |
+<<<<<<< HEAD
           tar -Jxf *.tar.xz
           cd immortalwrt-imagebuilder-23.05.3-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
 
+=======
+          tar -I zstd -xf *.tar.zst
+          cd immortalwrt-imagebuilder-$DEVICE_TARGET-$DEVICE_SUBTARGET.Linux-x86_64
+>>>>>>> main
           cp -rf $GITHUB_WORKSPACE/files .
           chmod +x files/etc/rc.local
           export KERNEL_VERSION="$(ls packages | grep kernel | awk -F '_' '{print $2}')"
@@ -168,6 +187,9 @@ jobs:
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \
             s/KERNEL_VERSION/$KERNEL_VERSION/g; \
             s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" files/etc/opkg/distfeeds.conf
+          cat repositories.conf > files/etc/opkg/distfeeds.conf
+          sed -i '/^src imagebuilder file:packages$/d' files/etc/opkg/distfeeds.conf || true
+          sed -i '/^option check_signature$/d' files/etc/opkg/distfeeds.conf || true
 
       - name: Build Normal RootFS
         run: |
@@ -175,10 +197,16 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/scripts/*
           $GITHUB_WORKSPACE/scripts/preset-terminal-tools.sh
           sed -i '/^CONFIG_ISO_IMAGES=y$/d' .config || true
+          sed -i '/# CONFIG_TARGET_ROOTFS_TARGZ is not set/s/.*/CONFIG_TARGET_ROOTFS_TARGZ=y/' .config
           sed -i "/CONFIG_TARGET_ROOTFS_SQUASHFS/s/.*/# CONFIG_TARGET_ROOTFS_SQUASHFS is not set/;
             /CONFIG_TARGET_ROOTFS_EXT4FS/s/.*/# CONFIG_TARGET_ROOTFS_EXT4FS is not set/" .config
           export CONFIG_NORMAL_PACKAGES=$(cat $GITHUB_WORKSPACE/config/normal-packages.config | tr -s "\n" " ")
+<<<<<<< HEAD
           make image FILES="files" V=s
+=======
+          make image PACKAGES="$CONFIG_NORMAL_PACKAGES -ipv6helper" FILES="files" V=s
+          ls -lR bin/targets/
+>>>>>>> main
           cp bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET/*rootfs.tar.gz $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE
           rm -rf immortalwrt-imagebuilder-23.05.3*

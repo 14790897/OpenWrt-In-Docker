@@ -1,8 +1,3 @@
-## 代码解读
-
-config/platform.config
-举例：x86_64/x86/64/linux-amd64/amd64
-解释：x86_64 是镜像的标签 x86 是 target 64 是 subtarget linux-amd64 是镜像构建时使用的平台
 
 ## 配置方法
 
@@ -41,6 +36,11 @@ nano /etc/config/network
 
 然后访问配置的 IP 地址就可以用了
 
+## 代码解读
+
+config/platform.config
+举例：x86_64/x86/64/linux-amd64/amd64
+解释：x86_64 是镜像的标签, x86 是 target, 64 是 subtarget, linux-amd64 是镜像构建时使用的平台, 第五个是额外的镜像标签
 
 ## 可以安装的包
   来源： https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/config/imagebuilder/imagebuilder.sh#L188

@@ -130,7 +130,7 @@ jobs:
           sed -i "/CONFIG_TARGET_ROOTFS_SQUASHFS/s/.*/# CONFIG_TARGET_ROOTFS_SQUASHFS is not set/;
             /CONFIG_TARGET_ROOTFS_EXT4FS/s/.*/# CONFIG_TARGET_ROOTFS_EXT4FS is not set/" .config
           export CONFIG_MINI_PACKAGES=$(cat $GITHUB_WORKSPACE/config/mini-packages.config | tr -s "\n" " ")
-          make image PACKAGES="$CONFIG_MINI_PACKAGES -ipv6helper" FILES="files" V=s
+          make image PACKAGES="$CONFIG_MINI_PACKAGES -ipv6helper -kmod-amazon-ena -kmod-bcmgenet -kmod-dwmac-imx -kmod-dwmac-rockchip -kmod-dwmac-sun8i -kmod-fsl-dpaa1-net -kmod-fsl-dpaa2-net -kmod-fsl-enetc-net -kmod-fsl-fec -kmod-mvneta -kmod-mvpp2 -kmod-octeontx2-net -kmod-renesas-net-avb -kmod-thunderx-net" FILES="files" V=s
           ls -lR bin/targets/
           cp bin/targets/$DEVICE_TARGET/$DEVICE_SUBTARGET/*rootfs.tar.gz $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE

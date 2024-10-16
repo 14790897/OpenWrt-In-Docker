@@ -18,7 +18,7 @@ networks:
   macvlan_net:
     driver: macvlan
     driver_opts:
-      parent: enp1s0
+      parent: enp1s0 # 宿主机的网卡名称，需要使用ip link show 手动查询，保持一致
     ipam:
       config:
         - subnet: 192.168.0.0/24 # 定义容器使用的子网，需要和当前网络一致

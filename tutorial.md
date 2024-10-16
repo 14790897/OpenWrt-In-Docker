@@ -21,13 +21,17 @@ networks:
       parent: enp1s0
     ipam:
       config:
-        - subnet: 192.168.0.0/24 # 定义容器使用的子网
-          gateway: 192.168.0.1 # 定义网关
+        - subnet: 192.168.0.0/24 # 定义容器使用的子网，需要和当前网络一致
+          gateway: 192.168.0.1 # 定义网关，需要和当前网络一致
 ```
 
 运行后进入 容器
+```sh
 docker exec -it openwrt /bin/bash
+```
+```sh
 nano /etc/config/network
+```
 修改 IP 地址和路由器同一网段，网关是路由器地址
 ![image|369x500](https://linux.do/uploads/default/original/3X/1/b/1bc20192030fc5da0c9b652341b77f34c55b211f.png)
 然后重启网络服务：

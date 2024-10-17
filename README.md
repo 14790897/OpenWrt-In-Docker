@@ -48,6 +48,15 @@ OpenWrt-Mni 镜像为几乎未添加额外软件包的 Docker 镜像，你可以
 |  x86_64/amd64   |  14790897/openwrt-mini:x86_64  |
 |     玩客云      | 14790897/openwrt-mini:onecloud |
 
+### 国内可以从南京大学镜像源下载
+
+只需要在原来的标签前面加上 `ghcr.nju.edu.cn` 即可，例如：
+
+```sh
+docker pull ghcr.nju.edu.cn/14790897/openwrt:<tag>
+docker pull ghcr.nju.edu.cn/14790897/openwrt-mini:<tag>
+```
+
 ## 注意事项
 
 - 其中，树莓派 2B 镜像同时适用于 2B/3B/3B+/4B 。

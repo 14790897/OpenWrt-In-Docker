@@ -21,4 +21,6 @@ networks:
 # ip addr add 192.168.0.198/24 dev macvlan0  # 分配在与容器相同子网内的 IP
 # ip link set macvlan0 up
 # ip route add 192.168.0.188 dev macvlan0
+# ip route del default via 192.168.0.188 dev enp1s0 # 删除默认路由
+# ip route add default via 192.168.0.188 dev macvlan0 # 添加macvlan0默认路由 172.24.66.92
 # 使用这个不需要开启网卡混杂模式 ip link set dev enp1s0 promisc on

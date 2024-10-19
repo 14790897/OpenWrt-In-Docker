@@ -47,6 +47,10 @@ nano /etc/config/network
 
 然后访问配置的 IP 地址就可以用了
 
+参考：
+
+https://post.smzdm.com/p/arqxqm8q/
+
 ## 自定义包和系统配置发布到自己的 dockerhub
 
 ### 1.fork 仓库

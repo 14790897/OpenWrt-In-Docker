@@ -3,7 +3,10 @@ services:
     image: 14790897/openwrt:x86_64
     container_name: openwrt
     restart: always
-    privileged: true
+    # privileged: true
+    cap_add:
+      - NET_ADMIN  # 增加 NET_ADMIN 权限
+      - NET_RAW
     networks:
       macvlan_net:
     command: /sbin/init
@@ -12,11 +15,11 @@ networks:
   macvlan_net:
     driver: macvlan
     driver_opts:
-      parent: enp1s0 # 更换为自己的网口
+      parent: enp1s0 # 宿主机的网卡名称，需要使用ip link show 手动查询，保持一致
     ipam:
       config:
-        - subnet: 192.168.0.0/24 # 更换为自己的子网
-          gateway: 192.168.0.1 # 更换为自己的的网关
+        - subnet: 192.168.0.0/24 # 定义容器使用的子网，需要和当前网络一致
+          gateway: 192.168.0.1 # 定义网关，需要和当前网络一致
 # ip link add macvlan0 link enp1s0 type macvlan mode bridge # 注意重启后不保留
 # ip addr add 192.168.0.198/24 dev macvlan0  # 分配在与容器相同子网内的 IP
 # ip link set macvlan0 up

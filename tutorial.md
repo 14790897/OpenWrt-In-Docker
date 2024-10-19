@@ -8,7 +8,10 @@ services:
     image: 14790897/openwrt:x86_64
     container_name: openwrt
     restart: always
-    privileged: true
+    # privileged: true
+    cap_add:
+      - NET_ADMIN # 增加 NET_ADMIN 权限
+      - NET_RAW
     networks:
       macvlan_net:
     command: /sbin/init

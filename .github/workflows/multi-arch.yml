@@ -152,7 +152,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}-stable
+            ghcr.io/${{ github.actor }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}-stable
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
       - name: Build & Push Mini Image (Extra Tag)
         if: env.DOCKER_EXTERA_TAG != null
@@ -163,10 +164,10 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}
-            ghcr.io/${{ github.actor }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
-            ghcr.io/${{ github.actor }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}-stable
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}-stable
+            ghcr.io/${{ github.actor }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}-stable
+            ghcr.io/${{ github.actor }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}-stable
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DEVICE_PLATFORM }}
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt-mini:${{ env.DOCKER_EXTERA_TAG }}
 
@@ -211,7 +212,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DEVICE_PLATFORM }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DEVICE_PLATFORM }}-stable
+            ghcr.io/${{ github.actor }}/openwrt:${{ env.DEVICE_PLATFORM }}-stable
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DEVICE_PLATFORM }}
 
       - name: Build & Push Normal Image (Extra Tag)
@@ -223,9 +225,9 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DEVICE_PLATFORM }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}
-            ghcr.io/${{ github.actor }}/openwrt:${{ env.DEVICE_PLATFORM }}
-            ghcr.io/${{ github.actor }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DEVICE_PLATFORM }}-stable
+            ${{ secrets.DOCKERHUB_USERNAME }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}-stable
+            ghcr.io/${{ github.actor }}/openwrt:${{ env.DEVICE_PLATFORM }}-stable
+            ghcr.io/${{ github.actor }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}-stable
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DEVICE_PLATFORM }}
           # registry.cn-shanghai.aliyuncs.com/${{ secrets.ALIYUN_NAMESPACES }}/openwrt:${{ env.DOCKER_EXTERA_TAG }}

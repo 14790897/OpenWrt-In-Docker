@@ -125,7 +125,7 @@ jobs:
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \
             s/KERNEL_VERSION/$KERNEL_VERSION/g; \
             s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" files/etc/opkg/distfeeds.conf
-          cat repositories.conf > files/etc/opkg/distfeeds.conf
+          cat config/repositories.conf > files/etc/opkg/distfeeds.conf
           sed -i '/^src imagebuilder file:packages$/d' files/etc/opkg/distfeeds.conf || true
           sed -i '/^option check_signature$/d' files/etc/opkg/distfeeds.conf || true
 
@@ -181,7 +181,7 @@ jobs:
             s/DEVICE_TARGET/$DEVICE_TARGET/g; \
             s/KERNEL_VERSION/$KERNEL_VERSION/g; \
             s/DEVICE_PLATFORM/$DEVICE_PLATFORM/g" files/etc/opkg/distfeeds.conf
-          cat repositories.conf > files/etc/opkg/distfeeds.conf
+          cat config/repositories.conf > files/etc/opkg/distfeeds.conf
           sed -i '/^src imagebuilder file:packages$/d' files/etc/opkg/distfeeds.conf || true
           sed -i '/^option check_signature$/d' files/etc/opkg/distfeeds.conf || true
 

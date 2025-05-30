@@ -12,6 +12,10 @@ env:
   PREFIX_URL: https://downloads.immortalwrt.org/snapshots/targets
 
 on:
+  push:
+    branches:
+      - main
+
   workflow_dispatch:
     inputs:
       INPUT_TARGET:
@@ -19,7 +23,7 @@ on:
         required: false
         default: "all"
   schedule:
-    - cron: 0 0 * * *
+    - cron: '0 0 * * 0'
 
 jobs:
   Config:

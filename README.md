@@ -14,7 +14,7 @@ DockerHub: <https://hub.docker.com/repository/docker/14790897/openwrt/general>
 
 ## 支持设备及镜像版本
 
-本项目基于 [immortalwrt: master](https://github.com/immortalwrt/immortalwrt/tree/master)，每日上午 8 点编译 OpenWrt 镜像
+本项目基于 [immortalwrt: master](https://github.com/immortalwrt/immortalwrt/tree/master)，每周上午 8 点编译 OpenWrt 镜像
 
 ### OpenWrt 标准镜像
 
@@ -56,7 +56,11 @@ OpenWrt-Mni 镜像为几乎未添加额外软件包的 Docker 镜像，你可以
 docker pull ghcr.nju.edu.cn/14790897/openwrt:<tag>
 docker pull ghcr.nju.edu.cn/14790897/openwrt-mini:<tag>
 ```
-
+或者使用ghcr
+```sh
+docker pull ghcr.io/14790897/openwrt:<tag>
+docker pull ghcr.io/14790897/openwrt-mini:<tag>
+```
 ## 注意事项
 
 - 其中，树莓派 2B 镜像同时适用于 2B/3B/3B+/4B 。

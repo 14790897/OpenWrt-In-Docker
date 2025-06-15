@@ -61,7 +61,7 @@ https://post.smzdm.com/p/arqxqm8q/
 
 ### 3.自定义安装的包
 
-修改 config\normal-packages.config，添加自己的包
+修改 config\normal-packages.config，添加自己的包 (哪些可以添加? https://downloads.immortalwrt.org/releases/packages-24.10/aarch64_generic)
 
 ### 4.自定义系统配置
 
